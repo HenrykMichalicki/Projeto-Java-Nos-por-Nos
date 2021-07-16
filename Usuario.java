@@ -8,9 +8,7 @@ public class Usuario {
 	private int telefone;
 	private String email; // login
 	private String senha;
-
-	
-	
+	private String local;
 	public String getNome() {
 		return nome;
 	}
@@ -41,4 +39,12 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public String getLocal() {
+		return local;
+	}
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
+	
 }

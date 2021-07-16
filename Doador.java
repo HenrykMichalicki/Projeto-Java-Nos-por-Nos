@@ -1,9 +1,8 @@
 package br.com.generation.projetoJava;
-
-	
 import java.util.Scanner;
 
 import java.util.ArrayList;
+
 
 
 	public class Doador extends Usuario {
@@ -119,7 +118,29 @@ import java.util.ArrayList;
 				setEmail(read.nextLine());
 				System.out.println("INSIRA SUA SENHA: ");
 				setSenha(read.nextLine());
-			}
+				System.out.println("ESCOLHA A SUA REGIÃO : "); 
+			    System.out.println("1- NORTE | 2- SUL | 3- LESTE | 4- OESTE | 5- CENTRO");
+			      int numeroLocal    = read.nextInt();
+			      switch(numeroLocal) {
+			          case 1:
+			                setLocal("NORTE");
+			                break;
+			          case 2:
+			                setLocal("SUL");
+			                break;
+			          case 3:
+			                setLocal("LESTE");
+			                break;
+			          case 4:
+			                setLocal("OESTE");
+			                break;
+			          case 5:
+			                setLocal("CENTRO");
+			                break;
+    }
+
+  }
+			
 			public void MessagemDoador(Scanner read) {
 				int RecebeConfirmacao = 0;
 				while(RecebeConfirmacao != 1) {
@@ -127,6 +148,7 @@ import java.util.ArrayList;
 					System.out.println("===============================================");
 					System.out.println("\nRESUMO DE SUA SOLICITAÇÃO DE DOAÇÃO\n");
 					System.out.println(getNome());
+					System.out.println("RESIDE NA REGIÃO : " + getLocal());
 					System.out.println("PRODUTOS ESCOLHIDOS FORAM:\n");
 					if (getDoaAlimentos()>1) {
 						System.out.println("["+getDoaAlimentos()+" KG DE ALIMENTOS NÃO PERECÍVEIS]\n");
@@ -158,19 +180,23 @@ import java.util.ArrayList;
 				
 					RecebeConfirmacao = read.nextInt();
 					if(RecebeConfirmacao == 1) {
-						System.out.println("===============================================");
-						System.out.println("         Obrigade, "+getNome() + "."        );
-						System.out.println("Sua ajuda fará a diferença em outras VIDAS!");
+						System.out.println("==================================================");
+						System.out.println("           Obrigade, "+getNome() + "."        );
+						System.out.println("Resumo de sua Doação enviado para "+ getEmail());
+						System.out.println("  Sua ajuda fará a diferença em outras VIDAS!");
+						System.out.println("==================================================");
 					}
-					else if(RecebeConfirmacao == 2) {
-						Doacao(read);
-					}
+					
+					//else if(RecebeConfirmacao == 2) {
+					//Doacao(read);
+					//
+				
 					else if (RecebeConfirmacao == 3) {
 						setDoaAlimentos(0);
 						setDoaBrinquedo(0);
 						setDoaRoupas(0);
 						setDoaFarmacia(0);
-						Doacao(read);
+						
 				}
 					else {
 						setDoaAlimentos(0);

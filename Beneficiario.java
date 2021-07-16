@@ -13,6 +13,7 @@ public class Beneficiario extends Usuario {
 	private int RecebeFarmacia;
 	private Objetos outros;
 	
+	
 	ArrayList <Objetos> Pedidos = new ArrayList<>();
 	
 
@@ -66,7 +67,7 @@ public class Beneficiario extends Usuario {
 
 	public void Demanda(Scanner read) {
 		
-		System.out.println("\n=================== DOADOR =====================");
+		System.out.println("\n=================== AMPARADO =====================");
 		System.out.println("\nO QUE VOCÊ DESEJA RECEBER: \n1 - ALIMENTOS NÃO PERECÍVEIS(kg)"
 				+ "\n2 - ROUPAS \n3 - BRINQUEDOS \n4 - FARMÁCIA \n5 - OUTROS");
 		int numero = 0;
@@ -123,14 +124,36 @@ public class Beneficiario extends Usuario {
 		setEmail(read.nextLine());
 		System.out.println("INSIRA SUA SENHA: ");
 		setSenha(read.nextLine());
-	}
+		System.out.println("QUAL A SUA REGIÃO : "); 
+        System.out.println("1- NORTE | 2- SUL | 3- LESTE | 4- OESTE | 5- CENTRO");
+        int numeroLocal    = read.nextInt();
+        switch(numeroLocal) {
+            case 1:
+                setLocal("NORTE");
+                break;
+            case 2:
+                setLocal("SUL");
+                break;
+            case 3:
+                setLocal("LESTE");
+                break;
+            case 4:
+                setLocal("OESTE");
+                break;
+            case 5:
+                setLocal("CENTRO");
+                break;
+        }
+
+    }
 
 	public void MessagemReceptor(Scanner read) {
 		int RecebeConfirmacao = 0;
 		while (RecebeConfirmacao != 1) {
-			System.out.println("===============================================");
-			System.out.println("\nRESUMO DE SUA SOLICITAÇÃO \n");
+			System.out.println("==================================================");
+			System.out.println("\n******RESUMO DE SUA SOLICITAÇÃO****** \n");
 			System.out.println(getNome());
+			System.out.println("RESIDE NA REGIÃO : " + getLocal());
 			System.out.println("PRODUTOS ESCOLHIDOS FORAM:\n");
 			if (getRecebeAlimentos() > 1) {
 				System.out.println("[" + getRecebeAlimentos() + " KG DE ALIMENTOS NÃO PERECÍVEIS]\n");
@@ -176,6 +199,7 @@ public class Beneficiario extends Usuario {
 				setRecebeBrinquedo(0);
 				setRecebeRoupas(0);
 				setRecebeFarmacia(0);
+				Pedidos.clear();
 				Demanda(read);
 			}
 			// Cancela os pedidos
